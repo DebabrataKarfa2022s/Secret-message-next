@@ -88,7 +88,7 @@ export default function UserDashboard() {
   useEffect(() => {
     fetchMessages();
     fetchAcceptMessages();
-  }, [fetchMessages, setValue, toast, fetchAcceptMessages, fetchMessages]);
+  }, [fetchMessages, setValue, toast, fetchAcceptMessages]);
 
   // handle switch change
   const handleSwitchChange = async () => {
