@@ -11,9 +11,12 @@ import { useToast } from '@/components/ui/use-toast';
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { signInSchema } from "@/schemas/signInSchema";
+import { useState } from "react";
+import { Loader2 } from "lucide-react";
 
 export default function SignInForm() {
     const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
 
     const form = useForm<z.infer<typeof signInSchema>>({
         resolver: zodResolver(signInSchema),
@@ -26,6 +29,7 @@ export default function SignInForm() {
     const { toast } = useToast();
 
     const onSubmit = async (data: z.infer<typeof signInSchema>) => {
+        setIsLoading(true);
         console.log("data : " , data.identifier)
         const response = await signIn('credentials', {
             redirect: false,
@@ -51,6 +55,7 @@ export default function SignInForm() {
         }
 
         if (response?.url) {
+            setIsLoading(false);
             router.replace('/dashboard');
         }
     };
@@ -88,7 +93,12 @@ export default function SignInForm() {
                                 </FormItem>
                             )}
                         />
-                        <Button className="w-full" type="submit">Sign In</Button>
+                        {
+                            isLoading ? <Button className="w-full">
+                                <Loader2 className="w-4 h-4 animate-spin"/> please wait
+                            </Button> : <Button className="w-full" type="submit">Sign In</Button>
+                        }
+                        
                     </form>
                 </Form>
                 <div className="text-center mt-4">

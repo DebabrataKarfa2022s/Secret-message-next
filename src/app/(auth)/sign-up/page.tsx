@@ -50,6 +50,7 @@ export default function SignUpForm() {
                 setIsCheckingUsername(true)
                 setUsernameMessage('') // reset message
                 try {
+                    
                     const response = await axios.post(`/api/check-username-unique?username=${username}`)
                     console.log("username unique response: ", response)
 
@@ -61,6 +62,7 @@ export default function SignUpForm() {
                     )
                 } finally {
                     setIsCheckingUsername(false)
+                    
                 }
             }
         }
