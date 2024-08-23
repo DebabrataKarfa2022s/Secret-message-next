@@ -22,7 +22,7 @@ export default function Home() {
     <>
     <Navbar/>
       {/* Main content */}
-      <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-12 bg-gray-800 text-white">
+      <main className="flex-grow flex flex-col items-center justify-center px-4 md:px-24 py-14 bg-gray-800 text-white">
         <section className="text-center mb-8 md:mb-12">
           <h1 className="text-3xl md:text-5xl font-bold">
             Dive into the World of Anonymous Feedback
@@ -61,7 +61,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="text-center p-6 md:p-6 bg-gray-900 text-white">
+      <footer className="text-center p-6 md:p-5 bg-gray-900 text-white">
         &copy;{new Date().getFullYear()} True Feedback. All rights reserved.
       </footer>
     </>
