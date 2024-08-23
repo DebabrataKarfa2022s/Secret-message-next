@@ -114,12 +114,14 @@ export default function UserDashboard() {
   };
 
   if (!session || !session.user) {
-    return <div>"login first"</div>;
+    return <div><p>login first</p></div>;
   }
 
   const {username} = session.user as User;
+  const baseUrl = typeof window !== "undefined" ? `${window.location.protocol}//${window.location.host}` : '';
 
-  const baseUrl = `${window.location.protocol}//${window.location.host}`;
+
+  // const baseUrl = `${window.location.protocol}//${window.location.host}`;
   const profileUrl = `${baseUrl}/u/${username}`;
 
   const copyToClipboard = () => {
